@@ -1,8 +1,8 @@
 # FinTechTransactionService
 
-FinTechTransactionService is a Java 21 and Spring Boot backend for a FinTech wallet and ledger workflow. It supports wallet creation, deposits, transfers, balance lookup, and ledger history while demonstrating GoF design patterns, SOLID principles, Java 21 virtual threads, Redis cache-aside, and a circuit breaker around a mock legacy fraud provider.
+FinTechTransactionService is a backend for a FinTech wallet. It supports wallet creation, deposits, transfers, balance lookup, and ledger history while demonstrating design patterns, SOLID principles, Java 21 virtual threads, Redis cache-aside, and a circuit breaker around a mock legacy fraud provider.
 
-## Technology Stack
+## Tech Stack
 
 - Java 21
 - Spring Boot 3.4.1
@@ -127,7 +127,7 @@ See [docs/api-examples.md](docs/api-examples.md).
 
 See [REFACTORING_CASE_STUDY.md](REFACTORING_CASE_STUDY.md).
 
-## Defense Notes
+## Notes
 
 The project is intentionally lightweight in infrastructure but production-style in boundaries. The persistence adapter is in-memory for a self-contained capstone demo. Redis is still implemented as a real cache adapter, and the fraud provider is a mock external dependency wrapped with Adapter and Circuit Breaker patterns.
 
