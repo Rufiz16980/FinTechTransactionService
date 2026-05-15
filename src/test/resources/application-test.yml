@@ -1,0 +1,12 @@
+spring:
+  main:
+    lazy-initialization: true
+
+fintech:
+  cache:
+    balance-ttl-seconds: 300
+  fees:
+    flat-transfer-fee: "0.50"
+  fraud:
+    outage-keyword: "FAIL_FRAUD"
+

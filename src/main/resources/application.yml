@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: fintech-transaction-service
+  threads:
+    virtual:
+      enabled: true
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [ "info", "health", "metrics", "circuitbreakers" ]
+  endpoint:
+    health:
+      show-details: always
+
+fintech:
+  cache:
+    balance-ttl-seconds: 300
+  fees:
+    flat-transfer-fee: "0.50"
+  fraud:
+    outage-keyword: "FAIL_FRAUD"
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      legacyFraudRiskClient:
+        sliding-window-size: 5
+        minimum-number-of-calls: 3
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+        permitted-number-of-calls-in-half-open-state: 2
+
+logging:
+  level:
+    root: INFO
+    az.et.fintechtransactionservice: DEBUG
+
